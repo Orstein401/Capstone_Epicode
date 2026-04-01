@@ -1,0 +1,96 @@
+using UnityEngine;
+
+[RequireComponent(typeof(CharacterController))]
+public class PlayerController : MonoBehaviour
+{
+    [Header("Componets")]
+    private CharacterController cc;
+    [SerializeField] private Transform cam;
+
+    [Header("Input")]
+    private float horizontal;
+    private float vertical;
+    private bool run;
+    private bool jump;
+
+    [Header("Movement")]
+    private float gravity = -9.81f;
+    private Vector3 direction;
+    private Vector3 velocity;
+
+    [Header("Parametres")]
+    [SerializeField] private float jumpHeigth = 0.5f;
+    [SerializeField] private float speedRotation = 3.5f;
+    [SerializeField] private float minSpeed = 3.5f;
+    [SerializeField] private float maxSpeed = 5.5f;
+    private float currentSpeed;
+
+    [Header("CheckGround")]
+    [SerializeField] private Transform checkerGround;
+    [SerializeField] private float radiusChecker;
+    [SerializeField] private LayerMask groundLayer;
+    private bool isGrounded = false;
+    private void Awake()
+    {
+        cc = GetComponent<CharacterController>();
+    }
+    private void Start()
+    {
+        currentSpeed = minSpeed;
+    }
+    private void Update()
+    {
+        InputPlayer();
+        Gravity();
+        Jump();
+        CalculateVelocity();
+        if (direction != Vector3.zero) CalculateRotation();
+        cc.Move(velocity * Time.deltaTime);
+    }
+    private void InputPlayer()
+    {
+        horizontal = Input.GetAxis("Horizontal");
+        vertical = Input.GetAxis("Vertical");
+        run = Input.GetKey(KeyCode.LeftShift);
+        jump = Input.GetKeyDown(KeyCode.Space);
+    }
+    private void Gravity()
+    {
+        isGrounded = Physics.CheckSphere(checkerGround.position, radiusChecker, groundLayer);
+        if (isGrounded && velocity.y <= 0)
+        {
+            velocity.y = 0f;
+            return;
+        }
+        velocity.y += gravity * Time.deltaTime;
+    }
+    private void Jump()
+    {
+        if (jump && isGrounded)
+        {
+            velocity.y = Mathf.Sqrt(jumpHeigth * -2f * gravity);
+        }
+    }
+    private void CalculateDirection()
+    {
+        direction = cam.forward * vertical + cam.right * horizontal;
+        direction.y = 0f;
+        direction.Normalize();
+    }
+    private void CalculateRotation()
+    {
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, speedRotation * Time.deltaTime);
+    }
+    private void CalculateVelocity()
+    {
+        currentSpeed = run ? maxSpeed : minSpeed;
+        CalculateDirection();
+        velocity = new Vector3(direction.x * currentSpeed, velocity.y, direction.z * currentSpeed);
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawSphere(checkerGround.position, radiusChecker);
+    }
+}
