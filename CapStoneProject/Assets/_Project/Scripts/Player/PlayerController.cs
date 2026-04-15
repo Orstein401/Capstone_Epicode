@@ -40,12 +40,15 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-        InputPlayer();
-        Gravity();
-        Jump();
-        CalculateVelocity();
-        if (direction != Vector3.zero) CalculateRotation();
-        cc.Move(velocity * Time.deltaTime);
+        if (!DialogueManager.Instance.IsDialoguePlaying())
+        {
+            InputPlayer();
+            Gravity();
+            Jump();
+            CalculateVelocity();
+            CalculateRotation();
+            cc.Move(velocity * Time.deltaTime);
+        }
     }
     private void InputPlayer()
     {
@@ -79,7 +82,10 @@ public class PlayerController : MonoBehaviour
     }
     private void CalculateRotation()
     {
-        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        Vector3 lookDirection = cam.forward;
+        lookDirection.Normalize();
+        lookDirection.y = 0f;
+        Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, speedRotation * Time.deltaTime);
     }
     private void CalculateVelocity()

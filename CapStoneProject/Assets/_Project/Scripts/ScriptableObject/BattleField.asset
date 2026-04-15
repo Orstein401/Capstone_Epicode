@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 065a3ea6656a6d7449f5f97f395527cb, type: 3}
+  m_Name: BattleField
+  m_EditorClassIdentifier: 
+  backgroundFile: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  titleFile: Rapporto dal fronte orientale
+  textFile: "Generale,  le condizioni al fronte stanno peggiorando rapidamente. Le
+    nostre truppe hanno resistito per giorni senza rinforzi, ma le scorte iniziano
+    a scarseggiare e il morale \xE8 in calo. Il nemico ha intensificato gli attacchi
+    durante la notte, sfruttando la scarsa visibilit\xE0 e la stanchezza dei soldati. 
+    Abbiamo perso contatto con l\u2019unit\xE0 avanzata a nord della valle, e temiamo
+    che siano stati sopraffatti. Senza un intervento immediato, rischiamo di perdere
+    l\u2019intera posizione entro pochi giorni.  Chiediamo rinforzi, munizioni e
+    supporto medico con la massima urgenza. Restiamo in attesa di ordini.  Con rispetto,
+    Capitano della 3\xAA divisione"
