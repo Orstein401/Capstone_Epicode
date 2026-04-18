@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,12 +11,13 @@ public class InventoryManager : Singleton<InventoryManager>, IDataPersistence
     private bool hasLetter;
 
     public SO_LetterItem LetterItem => letterItem;
+    protected override bool ShouldBeDestoyOnLoad() => true;
     public void AddLetter(SO_LetterItem item)
     {
         letterItem = item;
         hasLetter = true;
         DialogueManager.SetBool(nameHasLetter, hasLetter);
-        //Manager_Ui.Instance.ReadLetterUi(hasLetter);
+        Manager_Ui.Instance.ReadLetterUi(hasLetter);
     }
     public void ReadLetter()
     {

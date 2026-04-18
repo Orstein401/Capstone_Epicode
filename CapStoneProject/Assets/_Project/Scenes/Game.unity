@@ -1643,9 +1643,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 599236524}
-        m_TargetAssemblyTypeName: DataManager, Assembly-CSharp
-        m_MethodName: SaveGame
+      - m_Target: {fileID: 1673218619}
+        m_TargetAssemblyTypeName: Manager_Ui, Assembly-CSharp
+        m_MethodName: SaveButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2080,7 +2080,7 @@ GameObject:
   - component: {fileID: 599236523}
   - component: {fileID: 599236524}
   m_Layer: 0
-  m_Name: Savegame
+  m_Name: DataManger2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2434,9 +2434,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 599236524}
-        m_TargetAssemblyTypeName: DataManager, Assembly-CSharp
-        m_MethodName: LoadGame
+      - m_Target: {fileID: 1673218619}
+        m_TargetAssemblyTypeName: Manager_Ui, Assembly-CSharp
+        m_MethodName: LoadButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3240,7 +3240,7 @@ Transform:
   m_GameObject: {fileID: 1236101057}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 300, y: 0.6, z: 6.13}
+  m_LocalPosition: {x: 0, y: 0.6, z: 6.13}
   m_LocalScale: {x: 2, y: 1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4700,7 +4700,7 @@ Transform:
   m_GameObject: {fileID: 1887682703}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 300, y: -0.771, z: 5.333}
+  m_LocalPosition: {x: 0, y: -0.771, z: 16.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

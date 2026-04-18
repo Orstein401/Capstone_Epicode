@@ -73,4 +73,12 @@ public class Manager_Ui : Singleton<Manager_Ui>
         Time.timeScale = 1f;
         SceneManager.LoadSceneAsync(0);
     }
+    public void SaveButton()
+    {
+        DataManager.Instance.SaveGame();
+    }
+    public void LoadButton()
+    {
+        DataManager.Instance.LoadGame();
+    }
 }

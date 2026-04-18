@@ -50,6 +50,7 @@ public class DataManager : Singleton<DataManager>
     }
     public void SaveGame()
     {
+        Debug.Log("clica");
         if (dataGame == null) { return; }
         foreach (IDataPersistence data in dataPersistence)
         {

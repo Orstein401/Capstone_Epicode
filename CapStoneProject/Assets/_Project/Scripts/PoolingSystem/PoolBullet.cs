@@ -13,6 +13,7 @@ public class PoolBullet : Singleton<PoolBullet>
         base.Awake();
         CreatePool(sizePool);
     }
+    protected override bool ShouldBeDestoyOnLoad() => true;
     public void CreatePool(int numPrefab)
     {
         for (int i = 0; i < numPrefab; ++i)
