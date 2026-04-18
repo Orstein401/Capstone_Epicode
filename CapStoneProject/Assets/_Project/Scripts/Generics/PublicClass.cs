@@ -8,10 +8,11 @@ public class SoundData
     public AudioClip[] Clips;
 }
 [System.Serializable]
-public class SaveData
+public class GameSave
 {
+    public Vector3 LastPosition;
     public Vector3 SpawnPoint;
-    public string inkState;
-    public SO_LetterItem letter;
+    public string InkState;
+    public SO_LetterItem Letter;
 
 }

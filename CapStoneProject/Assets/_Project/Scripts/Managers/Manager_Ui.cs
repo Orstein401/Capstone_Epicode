@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Manager_Ui : Singleton<Manager_Ui>
@@ -17,7 +18,28 @@ public class Manager_Ui : Singleton<Manager_Ui>
     [SerializeField] private TextMeshProUGUI interactText;
     [SerializeField] private TextMeshProUGUI readLetter;
     public bool IsDocumentOpen { get; private set; }
-
+    [Header("MenuUi")]
+    [SerializeField] private GameObject uiMenu;
+    public bool IsMenuOpen=false;
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape)&&!IsDocumentOpen)
+        {
+            OpenOrCloseMenu();
+        }
+    }
+    protected override bool ShouldBeDestoyOnLoad() => true;
+    public void OpenOrCloseMenu()
+    {
+        IsMenuOpen = !IsMenuOpen;
+        uiMenu.SetActive(IsMenuOpen);
+        if (IsMenuOpen)
+        {
+            Time.timeScale = 0f;
+            return;
+        }
+        Time.timeScale = 1f;
+    }
     public void SetUpDocument(SO_Document file)
     {
         if (file == null) return;
@@ -45,5 +67,10 @@ public class Manager_Ui : Singleton<Manager_Ui>
     public void ReadLetterUi(bool active)
     {
         if (readLetter.enabled != active) readLetter.enabled = active;
+    }
+    public void ReturnToMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadSceneAsync(0);
     }
 }

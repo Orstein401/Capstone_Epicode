@@ -60,6 +60,7 @@ public class DialogueManager : Singleton<DialogueManager>
                 return;
         }
     }
+    protected override bool ShouldBeDestoyOnLoad() => true;
     public bool IsDialoguePlaying()
     {
         switch (dialogueState)

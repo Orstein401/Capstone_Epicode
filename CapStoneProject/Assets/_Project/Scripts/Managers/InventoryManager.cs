@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryManager : Singleton<InventoryManager>
+public class InventoryManager : Singleton<InventoryManager>, IDataPersistence
 {
     [SerializeField] private SO_LetterItem letterItem;
-    [SerializeField] private string nameHasReadLetter="hasReadLetter";
-    [SerializeField] private string nameHasLetter="hasLetter";
+    [SerializeField] private string nameHasReadLetter = "hasReadLetter";
+    [SerializeField] private string nameHasLetter = "hasLetter";
     private bool hasLetter;
 
     public SO_LetterItem LetterItem => letterItem;
@@ -14,8 +14,8 @@ public class InventoryManager : Singleton<InventoryManager>
     {
         letterItem = item;
         hasLetter = true;
-        DialogueManager.SetBool(nameHasLetter,hasLetter);
-        Manager_Ui.Instance.ReadLetterUi(hasLetter);
+        DialogueManager.SetBool(nameHasLetter, hasLetter);
+        //Manager_Ui.Instance.ReadLetterUi(hasLetter);
     }
     public void ReadLetter()
     {
@@ -33,5 +33,17 @@ public class InventoryManager : Singleton<InventoryManager>
         DialogueManager.SetBool(nameHasLetter, hasLetter);
         DialogueManager.SetBool(nameHasReadLetter, false);
         Manager_Ui.Instance.ReadLetterUi(hasLetter);
+    }
+
+    public void SaveData(GameSave data)
+    {
+        data.Letter = letterItem;
+    }
+    public void LoadData(GameSave data)
+    {
+        if (data.Letter != null)
+        {
+            AddLetter(data.Letter);
+        }
     }
 }
