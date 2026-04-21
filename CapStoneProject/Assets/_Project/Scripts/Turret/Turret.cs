@@ -15,7 +15,7 @@ public class Turret : MonoBehaviour
     private float lastTimeShoot;
 
     [Header("Projectile data")]
-    [SerializeField] private Bullet bulletPrefab;
+    //[SerializeField] private Bullet bulletPrefab;
     private Vector3 direction;
 
     [Header("Parametres Projectile")]
@@ -36,7 +36,7 @@ public class Turret : MonoBehaviour
                 RotateTurret();
                 if (Time.time - lastTimeShoot > fireRate)
                 {
-                    Shoot(direction);
+                    Shoot(firePoint.forward);
                     lastTimeShoot = Time.time;
                 }
             }

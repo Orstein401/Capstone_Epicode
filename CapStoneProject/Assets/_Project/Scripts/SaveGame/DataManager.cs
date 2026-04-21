@@ -9,7 +9,7 @@ public class DataManager : Singleton<DataManager>
     private List<IDataPersistence> dataPersistence;
     private FileDataHandler fileDataHandler;
     [SerializeField] private string path = "SaveGame.json";
-    private string profileId = "Slot1";
+    private string profileId = "";
     protected override void Awake()
     {
         base.Awake();
@@ -45,17 +45,16 @@ public class DataManager : Singleton<DataManager>
         foreach (IDataPersistence data in dataPersistence)
         {
             data.LoadData(dataGame);
-            Debug.Log("ha caricato");
+            //Debug.Log("ha caricato un dato");
         }
     }
     public void SaveGame()
     {
-        Debug.Log("clica");
         if (dataGame == null) { return; }
         foreach (IDataPersistence data in dataPersistence)
         {
             data.SaveData(dataGame);
-            Debug.Log("ha salvato");
+            //Debug.Log("ha salvato");
         }
        fileDataHandler.Save(dataGame,profileId);
     }
