@@ -7,7 +7,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
-public class DialogueManager : Singleton<DialogueManager>
+public class DialogueManager : Singleton<DialogueManager>, IDataPersistence
 {
     [Header("UI Dialogue")]
     [SerializeField] private GameObject uiDialogue;
@@ -20,7 +20,7 @@ public class DialogueManager : Singleton<DialogueManager>
     [Header("Componet")]
     private Story currentStory;
     private static DialogueVariables variables = new DialogueVariables();
-    [SerializeField] private TextAsset gloablInk;
+    // [SerializeField] private TextAsset gloablInk;
 
     [Header("State Dialogue")]
     [SerializeField] private StateDialogue dialogueState;
@@ -147,7 +147,10 @@ public class DialogueManager : Singleton<DialogueManager>
         variables.StopListening(currentStory);
         uiDialogue.SetActive(false);
         textDialogue.text = "";
-        Manager_Ui.Instance.ReadLetterUi(true);
+        if (variables.GetBool("hasLetter"))
+        {
+            Manager_Ui.Instance.ReadLetterUi(true);
+        }
 
         if (onDialogueComplete != null)
         {
@@ -217,8 +220,18 @@ public class DialogueManager : Singleton<DialogueManager>
     {
         variables.SetInt(nameValue, value);
     }
-    public string GetStoryJson()
+
+    void IDataPersistence.SaveData(GameSave data)
     {
-        return currentStory.state.ToJson();
+        data.KeysInt = new List<string>();
+        data.KeysBool = new List<string>();
+        data.ValuesBool = new List<bool>();
+        data.ValuesInt = new List<int>();
+        variables.FillListsWithVariables(data.KeysInt, data.ValuesInt, data.KeysBool, data.ValuesBool);
+    }
+    void IDataPersistence.LoadData(GameSave data)
+    {
+        variables.SetBoolsFromList(data.KeysBool, data.ValuesBool);
+        variables.SetIntegersFromList(data.KeysInt, data.ValuesInt);
     }
 }

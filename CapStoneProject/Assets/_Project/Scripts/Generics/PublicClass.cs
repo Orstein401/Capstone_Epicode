@@ -12,7 +12,13 @@ public class GameSave
 {
     public Vector3 LastPosition;
     public Vector3 SpawnPoint;
-    public string InkState;
     public SO_LetterItem Letter;
 
+    public List<string> ObjectsId = new List<string>();
+    public List<bool> ObjectStates = new List<bool>();
+
+    public List<string> KeysInt;
+    public List<string> KeysBool;
+    public List<int> ValuesInt;
+    public List<bool> ValuesBool;
 }

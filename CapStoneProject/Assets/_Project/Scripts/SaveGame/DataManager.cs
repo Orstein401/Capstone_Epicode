@@ -15,17 +15,6 @@ public class DataManager : Singleton<DataManager>
         base.Awake();
         fileDataHandler = new FileDataHandler(Application.persistentDataPath, path);
     }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            SaveGame();
-        }
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            LoadGame();
-        }
-    }
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;

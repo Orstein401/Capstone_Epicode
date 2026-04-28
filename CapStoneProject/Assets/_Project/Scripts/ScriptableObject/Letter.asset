@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Letter
   m_EditorClassIdentifier: 
   backgroundFile: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  titleFile: Lettere
-  textFile: daje roma daje
+  titleFile: Ordine di Comando
+  textFile: "A tutte le unit\xE0 incaricate della gestione dei prigionieri.\nPer
+    ordine diretto del comando, i prigionieri devono essere eliminati. \nNon \xE8
+    previsto alcun trasferimento.  \nEseguire immediatamente.\n \u2014 Comando"

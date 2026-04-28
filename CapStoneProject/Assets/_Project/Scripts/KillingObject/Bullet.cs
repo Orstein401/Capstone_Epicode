@@ -1,40 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
     [Header("Parametres")]
     private float speed;
-
-    [Header("Componets")]
-    private Rigidbody rb;
-
     [Header("Direction")]
     private Vector3 directionBullet;
-
     [Header("Timer Despawn")]
     [SerializeField] private float lifeTime;
     private float currentTime;
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
     private void OnEnable()
     {
         currentTime = lifeTime;
     }
     private void Update()
     {
+        transform.position += directionBullet * (speed * Time.deltaTime);
         DespawnTimer();
     }
-    private void FixedUpdate()
+    private void OnTriggerEnter(Collider other)
     {
-        rb.MovePosition(rb.position + directionBullet * (speed * Time.fixedDeltaTime));
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.TryGetComponent<LifeController>(out var player))
+        if (other.TryGetComponent<LifeController>(out var player))
         {
             player.DeathPlayer();
         }
@@ -46,8 +32,7 @@ public class Bullet : MonoBehaviour
         directionBullet = direction;
 
         Quaternion rotation = Quaternion.LookRotation(direction);
-        rb.MoveRotation(rotation);
-
+        transform.rotation = rotation;
         speed = speedBullet;
     }
     public void DespawnTimer()

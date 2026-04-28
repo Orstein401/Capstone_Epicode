@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Componets")]
     private CharacterController cc;
+    private PlayerAnimation anim;
     [SerializeField] private Transform cam;
 
     [Header("Input")]
@@ -33,6 +34,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         cc = GetComponent<CharacterController>();
+        anim = GetComponentInChildren<PlayerAnimation>();
     }
     private void Start()
     {
@@ -48,6 +50,7 @@ public class PlayerController : MonoBehaviour
             CalculateVelocity();
             CalculateRotation();
             cc.Move(velocity * Time.deltaTime);
+            anim.UpdateStates(direction, run, isGrounded);
         }
     }
     private void InputPlayer()
@@ -72,6 +75,7 @@ public class PlayerController : MonoBehaviour
         if (jump && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeigth * -2f * gravity);
+            anim.TriggerJump();
         }
     }
     private void CalculateDirection()

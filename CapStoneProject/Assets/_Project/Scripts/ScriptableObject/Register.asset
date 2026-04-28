@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 065a3ea6656a6d7449f5f97f395527cb, type: 3}
+  m_Name: Register
+  m_EditorClassIdentifier: 
+  backgroundFile: {fileID: 0}
+  titleFile: Registro logistico
+  textFile: "Razioni ridotte del 15% nell\u2019ultima settimana.\nMunizioni sufficienti
+    per operazioni limitate.\nRichiesti rinforzi e nuovi rifornimenti.\nSituazione
+    sotto controllo, ma instabile."

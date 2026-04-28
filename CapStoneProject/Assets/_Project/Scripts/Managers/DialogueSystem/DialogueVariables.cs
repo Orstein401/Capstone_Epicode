@@ -28,7 +28,7 @@ public class DialogueVariables
         }
         else
         {
-            Debug.LogError($"there's not a variable with this name: {name}");
+            Debug.LogWarning($"there's not a variable with this name: {name}");
         }
         return defaultValue;
     }
@@ -65,7 +65,7 @@ public class DialogueVariables
             {
                 Ink.Runtime.Object value = story.variablesState.GetVariableWithName(name);
                 variables.Add(name, value);
-                Debug.Log(name+" "+value);
+               //Debug.Log(name + " " + value);
             }
         }
     }
@@ -90,6 +90,59 @@ public class DialogueVariables
         foreach (KeyValuePair<string, Ink.Runtime.Object> variable in variables)
         {
             story.variablesState.SetGlobal(variable.Key, variable.Value);
+        }
+    }
+    public void FillListsWithVariables(List<string> intNames, List<int> intValues, List<string> boolNames, List<bool> boolValues)
+    {
+        foreach (string key in variables.Keys)
+        {
+            if (variables[key] is Ink.Runtime.BoolValue boolObject)
+            {
+                boolNames.Add(key);
+                boolValues.Add(boolObject.value);
+            }
+            else if (variables[key] is Ink.Runtime.IntValue intObject)
+            {
+                intNames.Add(key);
+                intValues.Add(intObject.value);
+            }
+        }
+    }
+    //public List<string> GetKeysName()
+    //{
+    //    return new List<string>(variables.Keys);
+    //}
+    //public List<object> GetValues()
+    //{
+    //    List<object> objs = new List<object>(variables.Values);
+    //    foreach (var value in variables.Values)
+    //    {
+    //        object obj = (value as Ink.Runtime.Value).valueObject;
+    //        objs.Add(obj);
+    //    }
+    //    return objs;
+    //}
+    //public void SetVariablesFromList(List<string> names, List<object> values)
+    //{
+    //    for (int i = 0; i < names.Count; i++)
+    //    {
+    //        variables[names[i]] = Ink.Runtime.Value.Create(values[i]);
+    //    }
+    //}
+
+    public void SetBoolsFromList(List<string> names, List<bool> values)
+    {
+        for (int i = 0; i < names.Count; i++)
+        {
+            variables[names[i]] = new Ink.Runtime.BoolValue(values[i]);
+        }
+    }
+
+    public void SetIntegersFromList(List<string> names, List<int> values)
+    {
+        for (int i = 0; i < names.Count; i++)
+        {
+            variables[names[i]] = new Ink.Runtime.IntValue(values[i]);
         }
     }
 }
