@@ -43,6 +43,4 @@ public class PlayerInteraction : MonoBehaviour
         Manager_Ui.Instance.InteractionUi(false);
     }
 }
-
-
-// Debug.DrawRay(viewCam.position, directionPoint.direction * distanceView, Color.red, 1f);
+//Debug.DrawRay(directionPoint.origin, directionPoint.direction * distanceView, Color.red);

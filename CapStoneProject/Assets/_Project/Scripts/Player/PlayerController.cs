@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private float gravity = -9.81f;
     private Vector3 direction;
     private Vector3 velocity;
+    private bool isActive = true;
 
     [Header("Parametres")]
     [SerializeField] private float jumpHeigth = 0.5f;
@@ -44,14 +45,23 @@ public class PlayerController : MonoBehaviour
     {
         if (!DialogueManager.Instance.IsDialoguePlaying())
         {
-            InputPlayer();
+            if (isActive)
+            {
+                InputPlayer();
+            }
             Gravity();
             Jump();
             CalculateVelocity();
             CalculateRotation();
             cc.Move(velocity * Time.deltaTime);
-            anim.UpdateStates(direction, run, isGrounded);
         }
+        else
+        {
+            run = false;
+            jump = false;
+            direction = Vector3.zero;
+        }
+        anim.UpdateStates(direction, run, isGrounded);
     }
     private void InputPlayer()
     {
@@ -97,6 +107,10 @@ public class PlayerController : MonoBehaviour
         currentSpeed = run ? maxSpeed : minSpeed;
         CalculateDirection();
         velocity = new Vector3(direction.x * currentSpeed, velocity.y, direction.z * currentSpeed);
+    }
+    public void ActiveOrDisactiveInput()
+    {
+        isActive = !isActive;
     }
     private void OnDrawGizmos()
     {

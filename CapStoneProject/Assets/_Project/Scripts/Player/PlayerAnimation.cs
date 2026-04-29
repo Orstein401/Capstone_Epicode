@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
-    private Animator playerAnim;
+    private Animator playerAnimator;
     [SerializeField] private string walk = "IsWalk";
     [SerializeField] private string run = "IsRun";
     [SerializeField] private string jump = "IsJump";
@@ -12,23 +12,23 @@ public class PlayerAnimation : MonoBehaviour
     [SerializeField] private string death = "IsDeath";
     private void Awake()
     {
-        playerAnim = GetComponent<Animator>();
+        playerAnimator = GetComponent<Animator>();
     }
     public void UpdateStates(Vector3 direction, bool isRun, bool isGrounded)
     {
         bool isWalking = direction != Vector3.zero;
         bool isRunning = isWalking && isRun;
 
-        playerAnim.SetBool(ground, isGrounded);
-        playerAnim.SetBool(walk, isWalking);
-        playerAnim.SetBool(run, isRunning);
+        playerAnimator.SetBool(ground, isGrounded);
+        playerAnimator.SetBool(walk, isWalking);
+        playerAnimator.SetBool(run, isRunning);
     }
     public void TriggerJump()
     {
-        playerAnim.SetTrigger(jump);
+        playerAnimator.SetTrigger(jump);
     }
     public void TriggerDeath()
     {
-        playerAnim.SetTrigger(death);
+        playerAnimator.SetTrigger(death);
     }
 }
