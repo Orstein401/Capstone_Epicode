@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Files", fileName = "Letter")]
+[CreateAssetMenu(menuName = "Letter")]
 public class SO_LetterItem : SO_Document
 {
     public void UseItem()

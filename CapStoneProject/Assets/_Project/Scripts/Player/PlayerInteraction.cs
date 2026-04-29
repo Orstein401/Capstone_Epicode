@@ -27,9 +27,12 @@ public class PlayerInteraction : MonoBehaviour
     }
     private void Interact()
     {
-        Ray directionPoint = cam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
+        Ray camRay = cam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
+        Vector3 origin = transform.position + Vector3.up * 1.5f;
+        Ray directionPoint = new Ray(origin, camRay.direction);
         if (Physics.Raycast(directionPoint, out RaycastHit hitinfo, distanceView))
         {
+            Debug.Log(hitinfo.collider.name);
             if (hitinfo.collider.TryGetComponent<IInteractable>(out var interactable) && !DialogueManager.Instance.IsDialoguePlaying())
             {
                 Manager_Ui.Instance.InteractionUi(true);
@@ -40,7 +43,7 @@ public class PlayerInteraction : MonoBehaviour
                 return;
             }
         }
+        //Debug.DrawRay(directionPoint.origin, directionPoint.direction * distanceView, Color.red);
         Manager_Ui.Instance.InteractionUi(false);
     }
 }
-//Debug.DrawRay(directionPoint.origin, directionPoint.direction * distanceView, Color.red);

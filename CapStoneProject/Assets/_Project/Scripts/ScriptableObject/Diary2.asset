@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 065a3ea6656a6d7449f5f97f395527cb, type: 3}
+  m_Name: Diary2
+  m_EditorClassIdentifier: 
+  backgroundFile: {fileID: 0}
+  titleFile: Giorno 27
+  textFile: 'Oggi abbiamo ricevuto meno razioni del solito.
+
+    Dicono che i rifornimenti
+    stanno finendo.
+
+    Nessuno si lamenta, ma si vede negli occhi.
+
+    La guerra
+    va avanti, ma qui sembra tutto fermo.
+
+    Come se stessimo aspettando qualcosa.'

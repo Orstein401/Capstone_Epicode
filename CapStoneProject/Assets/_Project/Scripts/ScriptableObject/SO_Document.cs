@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[CreateAssetMenu(menuName = "File", fileName = "Document")]
+[CreateAssetMenu(menuName = "Document")]
 public class SO_Document : ScriptableObject
 {
     [SerializeField] private Sprite backgroundFile;

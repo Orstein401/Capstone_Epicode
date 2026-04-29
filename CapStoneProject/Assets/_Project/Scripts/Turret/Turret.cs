@@ -15,7 +15,6 @@ public class Turret : MonoBehaviour
     private float lastTimeShoot;
 
     [Header("Projectile data")]
-    //[SerializeField] private Bullet bulletPrefab;
     private Vector3 direction;
 
     [Header("Parametres Projectile")]
@@ -24,7 +23,7 @@ public class Turret : MonoBehaviour
     private AudioSource sourceAudio;
     private void Awake()
     {
-     //   sourceAudio = GetComponent<AudioSource>();
+      sourceAudio = GetComponent<AudioSource>();
     }
     private void Update()
     {
@@ -48,11 +47,10 @@ public class Turret : MonoBehaviour
         bullet.transform.position = firePoint.position;
         bullet.SetDirectionRotationAndSpeed(direction, speedProjectile);
 
-       // AudioManager.Instance.PlaySound(sourceAudio, SoundID.Shoot);
+       AudioManager.Instance.PlaySound(sourceAudio, SoundID.Shoot);
     }
     private void RotateTurret()
     {
-        //direction.y = 0;
         direction.Normalize();
         Quaternion targetRotation = Quaternion.LookRotation(direction);
         Quaternion rotation = Quaternion.Lerp(transform.rotation, targetRotation, speedRotation * Time.deltaTime);
