@@ -34,5 +34,4 @@ public class LifeController : MonoBehaviour
         controller.ActiveOrDisactiveInput();
         coroutine = null;
     }
-
 }

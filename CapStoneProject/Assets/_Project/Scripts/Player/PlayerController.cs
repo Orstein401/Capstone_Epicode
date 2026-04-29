@@ -111,6 +111,8 @@ public class PlayerController : MonoBehaviour
     public void ActiveOrDisactiveInput()
     {
         isActive = !isActive;
+        horizontal = 0f;
+        vertical = 0f;
     }
     private void OnDrawGizmos()
     {
