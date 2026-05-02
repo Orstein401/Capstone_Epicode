@@ -32,7 +32,6 @@ public class PlayerInteraction : MonoBehaviour
         Ray directionPoint = new Ray(origin, camRay.direction);
         if (Physics.Raycast(directionPoint, out RaycastHit hitinfo, distanceView))
         {
-            Debug.Log(hitinfo.collider.name);
             if (hitinfo.collider.TryGetComponent<IInteractable>(out var interactable) && !DialogueManager.Instance.IsDialoguePlaying())
             {
                 Manager_Ui.Instance.InteractionUi(true);
@@ -43,7 +42,6 @@ public class PlayerInteraction : MonoBehaviour
                 return;
             }
         }
-        //Debug.DrawRay(directionPoint.origin, directionPoint.direction * distanceView, Color.red);
         Manager_Ui.Instance.InteractionUi(false);
     }
 }

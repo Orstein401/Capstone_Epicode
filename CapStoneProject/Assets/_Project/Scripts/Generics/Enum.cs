@@ -1,1 +1,1 @@
-public enum SoundID { Coin, FootStep, RunFootStep, Music, Shoot }
+public enum SoundID { Exsplosion, FootStep, RunFootStep, Music, Shoot }
