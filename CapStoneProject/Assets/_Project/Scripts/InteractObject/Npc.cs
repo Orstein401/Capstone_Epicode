@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,6 +7,6 @@ public class Npc : MonoBehaviour, IInteractable
     [SerializeField] private UnityEvent actionNpc;
     public void InteractWithObject()
     {
-        DialogueManager.Instance.EnterDialogueMode(dialogue,actionNpc);
+        DialogueManager.Instance.EnterDialogueMode(dialogue, actionNpc);
     }
 }

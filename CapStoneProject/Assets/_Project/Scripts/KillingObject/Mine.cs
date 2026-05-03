@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Mine : MonoBehaviour
@@ -13,7 +11,7 @@ public class Mine : MonoBehaviour
     {
         if (other.TryGetComponent<LifeController>(out var player))
         {
-            AudioManager.Instance.PlaySound(audioSource,SoundID.Exsplosion);
+            AudioManager.Instance.PlaySound(audioSource, SoundID.Exsplosion);
             player.DeathPlayer();
         }
     }

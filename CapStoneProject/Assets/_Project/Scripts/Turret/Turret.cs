@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Turret : MonoBehaviour
@@ -23,7 +21,7 @@ public class Turret : MonoBehaviour
     private AudioSource sourceAudio;
     private void Awake()
     {
-      sourceAudio = GetComponent<AudioSource>();
+        sourceAudio = GetComponent<AudioSource>();
     }
     private void Update()
     {
@@ -47,7 +45,7 @@ public class Turret : MonoBehaviour
         bullet.transform.position = firePoint.position;
         bullet.SetDirectionRotationAndSpeed(direction, speedProjectile);
 
-       AudioManager.Instance.PlaySound(sourceAudio, SoundID.Shoot);
+        AudioManager.Instance.PlaySound(sourceAudio, SoundID.Shoot);
     }
     private void RotateTurret()
     {

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu(menuName = "Document")]
 public class SO_Document : ScriptableObject
